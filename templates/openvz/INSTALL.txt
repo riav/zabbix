@@ -1,0 +1,10 @@
+##------------------------------------------------------------------------------------------------------
+## Habilit this session in zabbix_agentd.conf
+## Create a file in /etc/zabbix/zabbix_agent.d/userparameter_openvz.conf and add the following content:
+## UserParameter=openvz[*],sudo /etc/zabbix/scripts/openvz.pl "$1" "$2"
+##------------------------------------------------------------------------------------------------------
+## visudo
+## #Defaults    requiretty
+## Cmnd_Alias ZBX_CMD = /etc/zabbix/scripts/openvz.pl
+## zabbix  ALL=(ALL)       NOPASSWD: ZBX_CMD
+##------------------------------------------------------------------------------------------------------

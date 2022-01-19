@@ -1,0 +1,5 @@
+# CREATE USER zabbix WITH PASSWORD '123@zabbix'; GRANT SELECT ON pg_stat_activity to zabbix; GRANT SELECT ON pg_stat_activity to zabbix; GRANT SELECT ON pg_database to zabbix; GRANT SELECT ON pg_authid to zabbix; GRANT SELECT ON pg_stat_bgwriter to zabbix; GRANT SELECT ON pg_locks to zabbix; GRANT SELECT ON pg_stat_database to zabbix;
+# vi {HOME_ZABBIX}/.pgpass
+# hostname:port:database:username:password
+# hostname:5432:*:zabbix:123@zabbix
+# chmod 0600 ~/.pgpass

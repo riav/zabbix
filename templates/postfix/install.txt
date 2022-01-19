@@ -1,0 +1,26 @@
+#
+References:
+http://blog.janssenlima.com/2013/10/monitorar-postfix-pelo-zabbix.html
+https://www.zabbix.com/wiki/doku.php?id=howto/monitor/mail/postfix/monitoringpostfix
+http://www.middleswarth.net/2013/08/01/adding-postfix-template-zabbix-2-0/
+
+Add to zabbix server template Template_Postfix.xml
+
+Copy the postfix.sh for zabbix client(postfix) directory script and execution permission(Ex.: /etc/zabbix/externalscripts/)
+
+This type of monitoring is through scripts, and have need of EnableRemoteCommands parameter is set to '1 'value in the configuration file Zabbix client.
+It is also important that the active monitoring agent is configured, because the tracking script Postfix uses zabbix_sender command,
+and the items will be configured as the type Zabbix Trapper.
+
+Install the necessary packages in zabbix client(postfix):
+RedHat like:
+# yum install postfix-perl-scripts logcheck
+Debian like:
+# apt-get install pflogsumm logtail
+
+Configure crontab in zabbix client(postfix):
+*/5 * * * * root	/etc/zabbix/externalscripts/postfix.sh
+
+OBS.:
+The file /var/log/maillog by default does not give read access to other users of the system except the root,
+if you use another user to run the script postfix.sh, check if this is allowed to access the maillog.
